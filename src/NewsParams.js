@@ -1,6 +1,7 @@
 class HeadLineParameter{
     constructor(){
-
+        this._pageSize = 1
+        this._page = 1
     }
     set country(c) {this._country = c}
     get country() {return this._country}
@@ -20,6 +21,8 @@ class HeadLineParameter{
 
 class EverythingParameter{
     constructor(){
+        _pageSize = 1
+        _page = 1
 
     }
     set q(c) {this._q = c}
@@ -45,7 +48,8 @@ class EverythingParameter{
 }
 class SourcesParameter{
     constructor(){
-
+        _pageSize = 1
+        _page = 1
     }
     set country(c) {this._country = c}
     get country() {return this._country}
@@ -53,4 +57,10 @@ class SourcesParameter{
     get catagory() {return this._catagory}
     set language(c) {this._language = c}
     get language() {return this._language}
+}
+
+module.exports={
+    HeadLineParameter,
+    EverythingParameter,
+    SourcesParameter
 }
