@@ -9,7 +9,7 @@ class HeadLineParameter{
     get catagory() {return this._catagory}
     set sources(c) {this._sources = c}
     get sources() {return this._sources}
-    set q(c) {this._q = c}
+    set q(c) {this._q = encodeURIComponent(c)}
     get q() {return this._q}
     set pageSize(c) {this._pageSize = c}
     get pageSize() {return this._pageSize}
@@ -21,11 +21,11 @@ class HeadLineParameter{
 
 class EverythingParameter{
     constructor(){
-        _pageSize = 1
-        _page = 1
+        this._pageSize = 1
+        this._page = 1
 
     }
-    set q(c) {this._q = c}
+    set q(c) {this._q = encodeURIComponent(c)}
     get q() {return this._q}
     set sources(c) {this._sources = c}
     get sources() {return this._sources}
@@ -48,8 +48,8 @@ class EverythingParameter{
 }
 class SourcesParameter{
     constructor(){
-        _pageSize = 1
-        _page = 1
+        this._pageSize = 1
+        this._page = 1
     }
     set country(c) {this._country = c}
     get country() {return this._country}
