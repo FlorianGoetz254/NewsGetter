@@ -1,6 +1,6 @@
 //powered by NewsAPI.org
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('c68ad56df2ea406c8f7041016fa51489');
+const newsapi = new NewsAPI('64f8935c750143278ae1ecaef35d5b7a');
 
 const NewsParam = require('./NewsParams.js')
 
@@ -19,7 +19,7 @@ const NewsGetter = (Param, Callback) => {
         }).then(
         response => {
             Callback(response)
-            return response;
+            return //response;
         },
         onrejected => {
             console.log(onrejected)

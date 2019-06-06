@@ -21,8 +21,25 @@ app.get('/HeadLines', (req, res) => {
     param.pageSize > 100 ? param.pageSize = 100 : null
     p.page != undefined ? param.pag = p.page : param.page = 1
     param.language = p.language;
-    (NewsGetter(param, (d) => {
-        res.send(d)
+    (NewsGetter(param, (content) => {
+        var html = "<html><head></head><body>";
+        console.log(content);
+        var d = content;
+        //var d = JSON.parse(content);
+        var articles = d.articles;
+        html += "Total Results: " + content.totalResults;
+        articles.forEach(element => {
+            html += "<p>"
+            html += "<h1>" + (element.title != undefined ? element.title : element.name) + "</h1><br>"
+            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
+            html += "<h3>" + ("Description: "+element.description) + "</h3><br>"
+            html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
+            html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
+            html += "</p>"
+        });
+        html += "</body></html>";
+        console.log(html);
+        res.send(html)
     }))
 })
 
@@ -43,20 +60,51 @@ app.get('/Everything', (req, res) => {
     param.from = p.from
     param.to = p.to
     param.sortBy = p.sortBy;
-    (NewsGetter(param, (d) => {
-        res.send(d)
+    (NewsGetter(param, (content) => {
+        var html = "<html><head></head><body>";
+        var d = content;
+        //var d = JSON.parse(content);
+        var articles = d.articles;
+        html += "Total Results: " + content.totalResults;
+        articles.forEach(element => {
+            html += "<p>"
+            html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
+            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
+            html += "<h3>" + ("Description: "+element.description) + "</h3><br>"
+            html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
+            html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
+            html += "</p>"
+        });
+        html += "</body></html>";
+        console.log(html);
+        res.send(html)
     }))
 })
 
 app.get('/Sources', (req, res) => {
-    console.log(req.query)
+    //console.log(req.query)
     var p = req.query;
     var param;
     param = new ParamClasses.SourcesParameter();
     param.country = p.country
     param.catagory = p.catagory
     param.language = p.language;
-    (NewsGetter(param, (d) => {
-        res.send(d)
+    (NewsGetter(param, (content) => {
+        var html = "<html><head></head><body>";
+        var d = content;
+        //var d = JSON.parse(content);
+        var articles = d.sources;
+        articles.forEach(element => {
+            html += "<p>"
+            html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1>"
+            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5>"
+            html += "<h3>" + ("Description: "+element.description) + "</h3>"
+            html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
+            html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
+            html += "</p>"
+        });
+        html += "</body></html>";
+        console.log(html);
+        res.send(html)
     }))
 })

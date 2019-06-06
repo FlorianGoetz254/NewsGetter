@@ -9,6 +9,10 @@
             Type: <input type="text" name="type" value="HeadLines"><br>
             Stichwort: <input type="text" name="q"><br>
             Sprache: <input type="text" name="language" value="de"><br>
+            Kategorie: <input type="text" name="category"><br>
+            Quellen: <input type="text" name="sources"><br>
+            Seite: <input type="text" name="page" value="1"><br>
+            Seitengrößen: <input type="text" name="pagesize" value="20"><br>
         </form>
         <button onclick="openDyn()">Generate Link</button>
         <p>
@@ -17,10 +21,23 @@
         <script>
             function openDyn() {
                 var form = document.getElementById("frm1");
-                var link = `localhost:3000/${encodeURIComponent(document.getElementsByName("type")[0].value)}?q=${encodeURIComponent(document.getElementsByName("q")[0].value)}&language=${encodeURIComponent(document.getElementsByName("language")[0].value)}`;
+                var q = encodeURIComponent(document.getElementsByName("q")[0].value);
+                var source = encodeURIComponent(document.getElementsByName("sources")[0].value);
+                var category = encodeURIComponent(document.getElementsByName("category")[0].value);
 
+                var link = `localhost:3000/${encodeURIComponent(document.getElementsByName("type")[0].value)}?`+
+                `${q != "" ? "&q=" + q : "" }` +
+                //`?q=${encodeURIComponent(document.getElementsByName("q")[0].value) || 'undefined'}`+
+                `&language=${encodeURIComponent(document.getElementsByName("language")[0].value) || 'undefined'}`+
+                `${category != "" ? "&category=" + category : "" }` +
+                //`&category=${encodeURIComponent(document.getElementsByName("category")[0].value) || 'undefined'}`+
+                `${source != "" ? "&sources=" + source : "" }` +
+                //`&sources=${encodeURIComponent(document.getElementsByName("sources")[0].value) || 'undefined'}`+
+                `&page=${encodeURIComponent(document.getElementsByName("page")[0].value) || 'undefined'}`+
+                `&pagesize=${encodeURIComponent(document.getElementsByName("pagesize")[0].value) || 'undefined'}`;
+                console.log(link);
                 document.getElementById("link").innerHTML = link;
-                //document.getElementById("link")
+                document.getElementById("link").setAttribute('href', link);
             }
         </script>
     </body>
