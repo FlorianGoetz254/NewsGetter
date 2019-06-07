@@ -81,7 +81,7 @@ app.get('/Everything', (req, res) => {
             html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
             html += "<h5 style=\"color: whitesmoke;\">" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
             html += "<h3 style=\"color: whitesmoke;\">" + ("Description: "+element.description) + "</h3><br>"
-            html += "<h5 style=\"color: whitesmoke;\">" (element.content !== undefined ? element.content : "Country: "+element.country) + "</h5> <br>"
+            html += "<h5 style=\"color: whitesmoke;\">" (element.content !== undefined ? element.content : "Country: "+element.country) + "</h5><br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
             html += "</div>"
         });
