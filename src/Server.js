@@ -12,6 +12,7 @@ app.listen(3000, () => {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname+"/Static.html");
+    
 })
 
 app.get('/HeadLines', (req, res) => {
