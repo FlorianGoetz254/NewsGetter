@@ -4,18 +4,33 @@
         <!-- <link rel="stylesheet" type="text/css" href="theCss.css"> -->
         <style>
             body {
-              background-color: linen;
+              background-color: #333333;
+              margin-left: 5%;
+              
             }
             
             h1 {
-              color: maroon;
-              margin-left: 40px;
+              color: whitesmoke;
+              font-family: sans-serif;
+              
+              
             }
+
+            input[type="text"], textarea 
+            {
+            background-color : #333333;
+            color: whitesmoke;
+            margin-top: 2%;
+           
+             
+            }
+            
         </style>
     </head>
-    <body>
+    <body style = "color: whitesmoke ;">
+        
         <h1>NewsGetter</h1>
-        <form id="frm1">
+        <form id="frm1" >
             <span style="margin-right: 53px">Type: </span><input type="text" name="type" value="HeadLines"><br>
             <span style="margin-right: 22px">Stichwort: </span> <input type="text" name="q"><br>
             <span style="margin-right: 33px">Sprache: </span> <input type="text" name="language" value="de"><br>
@@ -24,7 +39,7 @@
             <span style="margin-right: 53px">Seite: </span> <input type="text" name="page" value="1"><br>
             <span style="margin-right: 0px">Seitengrößen: </span> <input type="text" name="pagesize" value="20"><br>
         </form>
-        <button onclick="openDyn()" style="margin-left: 93px">Generate Link</button>
+        <button onclick="openDyn()" style="margin-left: 5%; margin-top: 3%">Generate Link</button>
         <p>
             <a href="" id="link"></a>
         </p>
