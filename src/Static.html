@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <!-- <link rel="stylesheet" type="text/css" href="theCss.css"> -->
+        <style>
+            body {
+              background-color: linen;
+            }
+            
+            h1 {
+              color: maroon;
+              margin-left: 40px;
+            }
+        </style>
     </head>
     <body>
         <h1>NewsGetter</h1>
         <form id="frm1">
-            Type: <input type="text" name="type" value="HeadLines"><br>
-            Stichwort: <input type="text" name="q"><br>
-            Sprache: <input type="text" name="language" value="de"><br>
-            Kategorie: <input type="text" name="category"><br>
-            Quellen: <input type="text" name="sources"><br>
-            Seite: <input type="text" name="page" value="1"><br>
-            Seitengrößen: <input type="text" name="pagesize" value="20"><br>
+            <span style="margin-right: 53px">Type: </span><input type="text" name="type" value="HeadLines"><br>
+            <span style="margin-right: 22px">Stichwort: </span> <input type="text" name="q"><br>
+            <span style="margin-right: 33px">Sprache: </span> <input type="text" name="language" value="de"><br>
+            <span style="margin-right: 21px">Kategorie: </span> <input type="text" name="category"><br>
+            <span style="margin-right: 34px">Quellen: </span> <input type="text" name="sources"><br>
+            <span style="margin-right: 53px">Seite: </span> <input type="text" name="page" value="1"><br>
+            <span style="margin-right: 0px">Seitengrößen: </span> <input type="text" name="pagesize" value="20"><br>
         </form>
-        <button onclick="openDyn()">Generate Link</button>
+        <button onclick="openDyn()" style="margin-left: 93px">Generate Link</button>
         <p>
             <a href="" id="link"></a>
         </p>
