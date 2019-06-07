@@ -9,7 +9,9 @@ class HeadLineParameter{
     get catagory() {return this._catagory}
     set sources(c) {this._sources = c}
     get sources() {return this._sources}
-    set q(c) {this._q = encodeURIComponent(c)}
+    set q(c) {
+            	encodeURIComponent(c) != undefined ? this._q = encodeURIComponent(c) : this._q = undefined
+            }
     get q() {return this._q}
     set pageSize(c) {this._pageSize = c}
     get pageSize() {return this._pageSize}
@@ -25,7 +27,9 @@ class EverythingParameter{
         this._page = 1
 
     }
-    set q(c) {this._q = encodeURIComponent(c)}
+    set q(c) {
+        encodeURIComponent(c) != undefined ? this._q = encodeURIComponent(c) : this._q = undefined
+    }
     get q() {return this._q}
     set sources(c) {this._sources = c}
     get sources() {return this._sources}

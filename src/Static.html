@@ -31,12 +31,13 @@
         <script>
             function openDyn() {
                 var form = document.getElementById("frm1");
+                var type = encodeURIComponent(document.getElementsByName("type")[0].value);
                 var q = encodeURIComponent(document.getElementsByName("q")[0].value);
                 var source = encodeURIComponent(document.getElementsByName("sources")[0].value);
                 var category = encodeURIComponent(document.getElementsByName("category")[0].value);
 
-                var link = `localhost:3000/${encodeURIComponent(document.getElementsByName("type")[0].value)}?`+
-                `${q != "" ? "&q=" + q : "" }` +
+                var link = `localhost:3000/${type}?`+
+                `${q != "" ? "&q=" + q : '' }` +
                 //`?q=${encodeURIComponent(document.getElementsByName("q")[0].value) || 'undefined'}`+
                 `&language=${encodeURIComponent(document.getElementsByName("language")[0].value) || 'undefined'}`+
                 `${category != "" ? "&category=" + category : "" }` +
