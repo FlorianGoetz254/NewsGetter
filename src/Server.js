@@ -1,11 +1,17 @@
 const express = require('express')
 var app = express();
 
+const fs = require('fs');
+
 const ParamClasses = require('./NewsParams.js');
 const { NewsGetter } = require('./NewsGetter.js');
 
 app.listen(3000, () => {
     console.log('Example app listening on port 3000')
+})
+
+app.get('/', (req, res) => {
+    res.sendFile("D:\\Program Files\\GitPath\\NewsGetter\\src\\Static.html");
 })
 
 app.get('/HeadLines', (req, res) => {
