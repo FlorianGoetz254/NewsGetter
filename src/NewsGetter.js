@@ -5,7 +5,9 @@ const newsapi = new NewsAPI('64f8935c750143278ae1ecaef35d5b7a');
 const NewsParam = require('./NewsParams.js')
 
 const NewsGetter = (Param, Callback) => {
+    console.log(Param);
     if(Param instanceof NewsParam.HeadLineParameter){
+        console.log(Param);
         newsapi.v2.topHeadlines({
             //Parameter
             //undefined's sind valid (excl. Nummern(e.g.: Page, PageSize))
@@ -15,7 +17,6 @@ const NewsGetter = (Param, Callback) => {
             q: Param.q,
             pageSize: Param.pageSize,
             page: Param.page,
-            language: Param.language
         }).then(
         response => {
             Callback(response)
@@ -26,6 +27,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     } else
     if(Param instanceof NewsParam.EverythingParameter){
@@ -53,6 +55,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     } else
     if(Param instanceof NewsParam.SourcesParameter){
@@ -72,6 +75,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     }
     
