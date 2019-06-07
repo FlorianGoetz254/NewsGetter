@@ -26,6 +26,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     } else
     if(Param instanceof NewsParam.EverythingParameter){
@@ -53,6 +54,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     } else
     if(Param instanceof NewsParam.SourcesParameter){
@@ -72,6 +74,7 @@ const NewsGetter = (Param, Callback) => {
             return;
         }).catch((error)=>{
             console.log(error);
+            return;
         })
     }
     
