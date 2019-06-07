@@ -18,7 +18,7 @@ app.get('/HeadLines', (req, res) => {
     var p = req.query;
     var param;
     param = new ParamClasses.HeadLineParameter();
-    param.country = p.country || 'de'
+    param.country = p.country
     param.catagory = p.catagory
     param.sources = p.sources
     param.q = p.q
@@ -27,7 +27,7 @@ app.get('/HeadLines', (req, res) => {
     p.page != undefined ? param.pag = p.page : param.page = 1;
     NewsGetter(param, (content) => {
         content = JSON.parse(content);
-        var html = "<html><head></head><body style=\"background-color: linen\">";
+        var html = "<html><head></head><body style=\"background-color: #333333;\; \"font-color: whitesmoke;\"  >";
         console.log(content);
         var d = content;
         
@@ -37,11 +37,11 @@ app.get('/HeadLines', (req, res) => {
         var buildHelper = '';
         content.articles.forEach(element => {
             buildHelper += '<div style=\"margin: 40px;\">';
-            buildHelper += "<h1>" + (element.title != undefined ? element.title : element.name) + "</h1>";
-            buildHelper += "<h3>" + ("Description: "+element.description) + "</h3>";
-            buildHelper += "<h5>" + (element.author != undefined ? "Author: "+element.author+" | " : "Category: "+element.category + element.publishedAt !== undefined ? "Published at: "+element.publishedAt : "") + "</h5>";
+            buildHelper += "<h1 style=\"color: whitesmoke;\">" + (element.title != undefined ? element.title : element.name) + "</h1>";
+            buildHelper += "<h3 style=\"color: whitesmoke;\">" + ("Description: "+element.description) + "</h3>";
+            buildHelper += "<h5 style=\"color: whitesmoke;\">" + (element.author != undefined ? "Author: "+element.author+" | " : "Category: "+element.category + element.publishedAt !== undefined ? "Published at: "+element.publishedAt : "") + "</h5>";
             
-            buildHelper += element.content !== undefined ? element.content+"<br>" : "Country: "+element.country + "<br>";
+            buildHelper += "<h5 style=\"color: whitesmoke;\">"+ (element.content !== undefined ? element.content+"<br>" : "Country: "+element.country) +"</h5> <br>";
             buildHelper += "<a href=\"" + element.url + "\" >"+element.url+"</a><br>";
             buildHelper += "</div>"
             html += buildHelper;
@@ -70,6 +70,7 @@ app.get('/Everything', (req, res) => {
     param.to = p.to
     param.sortBy = p.sortBy;
     (NewsGetter(param, (content) => {
+        content = JSON.parse(content);
         var html = "<html><head></head><body>";
         var d = content;
         //var d = JSON.parse(content);
@@ -77,10 +78,10 @@ app.get('/Everything', (req, res) => {
         html += "Total Results: " + content.totalResults;
         articles.forEach(element => {
             html += '<div style=\"margin: 40px;\">';
-            html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
-            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
-            html += "<h3>" + ("Description: "+element.description) + "</h3><br>"
-            html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
+            html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
+            html += "<h5 style=\"color: whitesmoke;\">" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
+            html += "<h3 style=\"color: whitesmoke;\">" + ("Description: "+element.description) + "</h3><br>"
+            html += "<h5 style=\"color: whitesmoke;\">" (element.content !== undefined ? element.content : "Country: "+element.country) + "</h5> <br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
             html += "</div>"
         });
@@ -99,13 +100,13 @@ app.get('/Sources', (req, res) => {
     param.catagory = p.catagory
     param.language = p.language;
     (NewsGetter(param, (content) => {
-        var html = '<html><head></head><body style = \"background-color:  #333333\">';
+        var html = '<html><head></head><body style = \"background-color:#333333\;">';
         var d = content;
         //var d = JSON.parse(content);
         var articles = d.sources;
         articles.forEach(element => {
-            html += '<div style=\"margin: 40px;\; background-color: #333333">';
-            html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1>"
+            html += '<div style=\"margin: 40px;\">';
+            html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1>"
             html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5>"
             html += "<h3>" + ("Description: "+element.description) + "</h3>"
             html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
