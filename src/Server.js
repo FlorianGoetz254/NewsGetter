@@ -1,8 +1,6 @@
 const express = require('express')
 var app = express();
 
-const fs = require('fs');
-
 const ParamClasses = require('./NewsParams.js');
 const { NewsGetter } = require('./NewsGetter.js');
 
@@ -20,32 +18,34 @@ app.get('/HeadLines', (req, res) => {
     var p = req.query;
     var param;
     param = new ParamClasses.HeadLineParameter();
-    param.country = p.country
+    param.country = p.country || 'de'
     param.catagory = p.catagory
     param.sources = p.sources
     param.q = p.q
     p.pageSize != undefined ? param.pageSize = p.pageSize : param.pageSize = 20
     param.pageSize > 100 ? param.pageSize = 100 : null
     p.page != undefined ? param.pag = p.page : param.page = 1
-    param.language = p.language;
     (NewsGetter(param, (content) => {
-        var html = "<html><head></head><body>";
+        var html = "<html><head></head><body style=\"background-color: linen\">";
         console.log(content);
         var d = content;
         //var d = JSON.parse(content);
         var articles = d.articles;
         html += "Total Results: " + content.totalResults;
+        var buildHelper = '';
         articles.forEach(element => {
-            html += "<p>"
-            html += "<h1>" + (element.title != undefined ? element.title : element.name) + "</h1><br>"
-            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
-            html += "<h3>" + ("Description: "+element.description) + "</h3><br>"
-            html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
-            html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
-            html += "</p>"
+            buildHelper += '<div style=\"margin: 40px;\">';
+            buildHelper += "<h1>" + (element.title != undefined ? element.title : element.name) + "</h1>";
+            buildHelper += "<h3>" + ("Description: "+element.description) + "</h3>";
+            buildHelper += "<h5>" + (element.author != undefined ? "Author: "+element.author+" | " : "Category: "+element.category + element.publishedAt !== undefined ? "Published at: "+element.publishedAt : "") + "</h5>";
+            
+            buildHelper += element.content !== undefined ? element.content+"<br>" : "Country: "+element.country + "<br>";
+            buildHelper += "<a href=\"" + element.url + "\" >"+element.url+"</a><br>";
+            buildHelper += "</div>"
+            html += buildHelper;
         });
         html += "</body></html>";
-        console.log(html);
+        //console.log(html);
         res.send(html)
     }))
 })
@@ -74,13 +74,13 @@ app.get('/Everything', (req, res) => {
         var articles = d.articles;
         html += "Total Results: " + content.totalResults;
         articles.forEach(element => {
-            html += "<p>"
+            html += '<div style=\"margin: 40px;\">';
             html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
             html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
             html += "<h3>" + ("Description: "+element.description) + "</h3><br>"
             html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
-            html += "</p>"
+            html += "</div>"
         });
         html += "</body></html>";
         console.log(html);
@@ -102,13 +102,13 @@ app.get('/Sources', (req, res) => {
         //var d = JSON.parse(content);
         var articles = d.sources;
         articles.forEach(element => {
-            html += "<p>"
+            html += '<div style=\"margin: 40px;\">';
             html += "<h1>" + (element.title !== undefined ? element.title : element.name) + "</h1>"
             html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5>"
             html += "<h3>" + ("Description: "+element.description) + "</h3>"
             html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
-            html += "</p>"
+            html += "</div>"
         });
         html += "</body></html>";
         console.log(html);
