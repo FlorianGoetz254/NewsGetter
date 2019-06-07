@@ -11,7 +11,7 @@ app.listen(3000, () => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile("D:\\Program Files\\GitPath\\NewsGetter\\src\\Static.html");
+    res.sendFile(__dirname+"/Static.html");
 })
 
 app.get('/HeadLines', (req, res) => {
