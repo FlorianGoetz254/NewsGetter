@@ -1,8 +1,6 @@
 const express = require('express')
 var app = express();
 
-const fs = require('fs');
-
 const ParamClasses = require('./NewsParams.js');
 const { NewsGetter } = require('./NewsGetter.js');
 
