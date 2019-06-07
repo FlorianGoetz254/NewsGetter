@@ -7,7 +7,7 @@ const ParamClasses = require('./NewsParams.js');
 const { NewsGetter } = require('./NewsGetter.js');
 
 app.listen(3000, () => {
-    console.log('Example app listening on port 3000')
+    console.log('NewsGetter is now running on Port 3000')
 })
 
 app.get('/', (req, res) => {
