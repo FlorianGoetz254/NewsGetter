@@ -24,16 +24,16 @@ app.get('/HeadLines', (req, res) => {
     param.q = p.q
     p.pageSize != undefined ? param.pageSize = p.pageSize : param.pageSize = 20
     param.pageSize > 100 ? param.pageSize = 100 : null
-    p.page != undefined ? param.pag = p.page : param.page = 1
-    (NewsGetter(param, (content) => {
+    p.page != undefined ? param.pag = p.page : param.page = 1;
+    NewsGetter(param, (content) => {
         var html = "<html><head></head><body style=\"background-color: linen\">";
         console.log(content);
-        var d = content;
-        //var d = JSON.parse(content);
-        var articles = d.articles;
+        var d = d.articles;
+        console.log(d);
+        d = d.articles;
         html += "Total Results: " + content.totalResults;
         var buildHelper = '';
-        articles.forEach(element => {
+        d.forEach(element => {
             buildHelper += '<div style=\"margin: 40px;\">';
             buildHelper += "<h1>" + (element.title != undefined ? element.title : element.name) + "</h1>";
             buildHelper += "<h3>" + ("Description: "+element.description) + "</h3>";
@@ -46,9 +46,9 @@ app.get('/HeadLines', (req, res) => {
         });
         html += "</body></html>";
         //console.log(html);
-        res.send(html)
-    }))
-})
+        res.send(html);
+    });
+});
 
 app.get('/Everything', (req, res) => {
     console.log(req.query)

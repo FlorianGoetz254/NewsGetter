@@ -9,22 +9,22 @@ const NewsParam = require('./NewsParams.js')
 
 const NewsGetter = (Param, Callback) => {
     console.log(Param);
-
+    var url = 'https://newsapi.org/v2/top-headlines?apiKey=64f8935c750143278ae1ecaef35d5b7a';
+    Param.country != undefined ? url+=`&country=${Param.country}` : null;
+    Param.catagory != undefined ? url+=`&catagory=${Param.catagory}` : null;
+    Param.sources != undefined ? url+=`&sources=${Param.sources}` : null;
+    Param.q != undefined ? url+=`&q=${Param.q}` : null;
+    (Param.page != undefined || Param.page < 1) ? url+=`&page=${Param.page}` : null;
+    (Param.pageSIze != undefined || Param.pageSize < 1) ? url+=`&pageSize=${Param.pageSize}` : null;
+    console.log(url);
+    request(url, (error, response, body) => {
+        Callback(body);
+        console.log(body);
+        return;
+    })
     if(Param instanceof NewsParam.HeadLineParameter){
     //    //https://newsapi.org/v2/top-headlines?country=us&apiKey=64f8935c750143278ae1ecaef35d5b7a !!!example!!!
-        var url = 'https://newsapi.org/v2/top-headlines?apiKey=64f8935c750143278ae1ecaef35d5b7a&';
-        Param.country != undefined ? url+=`&country=${Param.country}` : null;
-        Param.catagory != undefined ? url+=`&catagory=${Param.catagory}` : null;
-        Param.sources != undefined ? url+=`&sources=${Param.sources}` : null;
-        Param.q != undefined ? url+=`&q=${Param.q}` : null;
-        (Param.page != undefined || Param.page < 1) ? url+=`&page=${Param.page}` : null;
-        (Param.pageSIze != undefined || Param.pageSize < 1) ? url+=`&pageSize=${Param.pageSize}` : null;
-        console.log(url);
-        request(url, (error, response, body) => {
-            Callback(body);
-            console.log(body);
-            return;
-        })
+        
     //     console.log(Param);
     //     newsapi.v2.topHeadlines({
     //         //Parameter
