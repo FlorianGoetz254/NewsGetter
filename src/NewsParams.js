@@ -4,7 +4,9 @@ class HeadLineParameter{
         this._page = 1
     }
     set country(c) {this._country = c}
+
     get country() {return this._country}
+    
     set category(c) {this._category = c}
     get category() {return this._category}
     set sources(c) {this._sources = c}
