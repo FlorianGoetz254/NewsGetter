@@ -95,7 +95,7 @@ app.get('/Everything', (req, res) => {
         //var d = JSON.parse(content);
         //console.log(d);
         var articles = d.articles;
-        html += "Total Results: " + content.totalResults;
+        html += "<b style=\"color: whitesmoke;\">" +("Total Results: " + content.totalResults) + "</b>";
         articles.forEach(element => {
             html += '<div style=\"margin: 40px;\">';
             html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"

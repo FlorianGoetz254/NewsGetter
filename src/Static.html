@@ -80,19 +80,27 @@
                 `${q != "" ? "&q=" + q : '' }` +
 
                 //`?q=${encodeURIComponent(document.getElementsByName("q")[0].value) || 'undefined'}`+
+
                 `&language=${encodeURIComponent(document.getElementsByName("language")[0].value) || 'undefined'}`+
+
                 `${category != "" ? "&category=" + category : "" }` +
                 //`&category=${encodeURIComponent(document.getElementsByName("category")[0].value) || 'undefined'}`+
+
                 `${source != "" ? "&sources=" + source : "" }` +
+
                 //`&sources=${encodeURIComponent(document.getElementsByName("sources")[0].value) || 'undefined'}`+
+
                 `&page=${encodeURIComponent(document.getElementsByName("page")[0].value) || 'undefined'}`+
+
                 `&pagesize=${encodeURIComponent(document.getElementsByName("pagesize")[0].value) || 'undefined'}`;
                 console.log(link);
+
                 document.getElementById("link").innerHTML = link;
+                
                 document.getElementById("link").setAttribute('href', link);
             }
         </script>
-        
+
 
     </body>
 

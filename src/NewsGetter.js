@@ -1,12 +1,15 @@
 //powered by NewsAPI.org
+//Module requiren
 const NewsAPI = require('newsapi');
+
 const newapikey = '64f8935c750143278ae1ecaef35d5b7a'
+
 const newsapi = new NewsAPI(newapikey);
 
 const request = require('request')
 
 const NewsParam = require('./NewsParams.js')
-
+//
 const NewsGetter = (Param, Callback) => {
     console.log('Param: '+ JSON.stringify(Param));
 
@@ -68,7 +71,7 @@ const NewsGetter = (Param, Callback) => {
 
 
 
-    
+
     // if(Param instanceof NewsParam.HeadLineParameter){
     // //    //https://newsapi.org/v2/top-headlines?country=us&apiKey=64f8935c750143278ae1ecaef35d5b7a !!!example!!!
         
