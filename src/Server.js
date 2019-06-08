@@ -33,7 +33,7 @@ app.get('/HeadLines', (req, res) => {
         
         console.log(d);
         d = d.articles;
-        html += "Total Results: " + content.totalResults;
+        html += "<b style=\"color: whitesmoke;\">" + ("Total Results: " + content.totalResults) +"</b>";
         var buildHelper = '';
         content.articles.forEach(element => {
             buildHelper += '<div style=\"margin: 40px;\">';
