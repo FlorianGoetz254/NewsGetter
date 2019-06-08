@@ -5,8 +5,8 @@ class HeadLineParameter{
     }
     set country(c) {this._country = c}
     get country() {return this._country}
-    set catagory(c) {this._catagory = c}
-    get catagory() {return this._catagory}
+    set category(c) {this._category = c}
+    get category() {return this._category}
     set sources(c) {this._sources = c}
     get sources() {return this._sources}
     set q(c) {
@@ -57,8 +57,8 @@ class SourcesParameter{
     }
     set country(c) {this._country = c}
     get country() {return this._country}
-    set catagory(c) {this._catagory = c}
-    get catagory() {return this._catagory}
+    set category(c) {this._category = c}
+    get category() {return this._category}
     set language(c) {this._language = c}
     get language() {return this._language}
 }

@@ -18,8 +18,9 @@ app.get('/HeadLines', (req, res) => {
     var p = req.query;
     var param;
     param = new ParamClasses.HeadLineParameter();
-    param.country = p.country
-    param.catagory = p.catagory
+    param.country = p.country || p.language
+    console.log(p.category)
+    param.category = p.category
     param.sources = p.sources
     param.q = p.q
     p.pageSize != undefined ? param.pageSize = p.pageSize : param.pageSize = 20
@@ -28,10 +29,10 @@ app.get('/HeadLines', (req, res) => {
     NewsGetter(param, (content) => {
         content = JSON.parse(content);
         var html = "<html><head></head><body style=\"background-color: #333333;\; \"font-color: whitesmoke;\"  >";
-        console.log(content);
+       // console.log(content);
         var d = content;
         
-        console.log(d);
+        //console.log(d);
         d = d.articles;
         html += "<b style=\"color: whitesmoke;\">" + ("Total Results: " + content.totalResults) +"</b>";
         var buildHelper = '';
@@ -62,7 +63,7 @@ app.get('/Everything', (req, res) => {
     param.q = p.q
     p.pageSize != undefined ? param.pageSize = p.pageSize : param.pageSize = 20
     param.pageSize > 100 ? param.pageSize = 100 : null
-    p.page != undefined ? param.pag = p.page : param.page = 1
+    p.page != undefined ? param.page = p.page : param.page = 1
     param.language = p.language
     param.domains = p.domains
     param.excludeDomains = p.excludeDomains
@@ -74,6 +75,7 @@ app.get('/Everything', (req, res) => {
         var html = "<html><head></head><body body style=\"background-color: #333333;\; \"font-color: whitesmoke;\">";
         var d = content;
         //var d = JSON.parse(content);
+        //console.log(d);
         var articles = d.articles;
         html += "Total Results: " + content.totalResults;
         articles.forEach(element => {
@@ -81,12 +83,12 @@ app.get('/Everything', (req, res) => {
             html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1><br>"
             html += "<h5 style=\"color: whitesmoke;\">" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5><br>"
             html += "<h3 style=\"color: whitesmoke;\">" + ("Description: "+element.description) + "</h3><br>"
-            html += "<h5 style=\"color: whitesmoke;\">" (element.content !== undefined ? element.content : "Country: "+element.country) + "</h5><br>"
+            html += "<h5 style=\"color: whitesmoke;\">" +(element.content !== undefined ? element.content : "Country: "+element.country) + "</h5><br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
             html += "</div>"
         });
         html += "</body></html>";
-        console.log(html);
+        //console.log(html);
         res.send(html)
     }))
 })
@@ -97,7 +99,7 @@ app.get('/Sources', (req, res) => {
     var param;
     param = new ParamClasses.SourcesParameter();
     param.country = p.country
-    param.catagory = p.catagory
+    param.category = p.category
     param.language = p.language;
     (NewsGetter(param, (content) => {
         content = JSON.parse(content);
@@ -115,7 +117,7 @@ app.get('/Sources', (req, res) => {
             html += "</div>"
         });
         html += "</body></html>";
-        console.log(html);
+        //console.log(html);
         res.send(html)
     }))
 })

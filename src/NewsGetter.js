@@ -8,7 +8,8 @@ const request = require('request')
 const NewsParam = require('./NewsParams.js')
 
 const NewsGetter = (Param, Callback) => {
-    console.log(Param);
+    console.log('Param: '+ JSON.stringify(Param));
+
    // language = "de";
     var type;
     Param instanceof NewsParam.HeadLineParameter ? type = 'top-headlines' : null;
@@ -17,23 +18,24 @@ const NewsGetter = (Param, Callback) => {
 
     var url = `https://newsapi.org/v2/${type}?apiKey=64f8935c750143278ae1ecaef35d5b7a`;
     Param.country != undefined ? url+=`&country=${Param.country}` : null;
-    Param.catagory != undefined ? url+=`&catagory=${Param.catagory}` : null;
+    Param.category != undefined ? url+=`&category=${Param.category}` : null;
     Param.sources != undefined ? url+=`&sources=${Param.sources}` : null;
-    Param.q != undefined ? url+=`&q=${Param.q}` : null;
+    //console.log(Param.q === 'undefined');
+    if (Param.q == undefined || Param.q == 'undefined') url+=`&q=${encodeURIComponent(Param.q)}` ;
     Param.excludeDomains != undefined ? url+=`&excludeDomains=${Param.excludeDomains}` : null;
     Param.domains != undefined ? url+=`&domains=${Param.domains}` : null;
     Param.from != undefined ? url+=`&from=${Param.from}` : null;
     Param.to != undefined ? url+=`&to=${Param.to}` : null;
-    Param.language != undefined ? url+=`&qlanguage${Param.language}` : null;
+    Param.language != undefined ? url+=`&language=${Param.language}` : null;
     Param.sortBy != undefined ? url+=`&sortBy=${Param.sortBy}` : null;
 
     (Param.page != undefined || Param.page < 1) ? url+=`&page=${Param.page}` : null;
-    (Param.pageSIze != undefined || Param.pageSize < 1) ? url+=`&pageSize=${Param.pageSize}` : null;
+    (Param.pageSize != undefined || Param.pageSize < 1) ? url+=`&pageSize=${Param.pageSize}` : null;
     console.log(url);
 
     request(url, (error, response, body) => {
         Callback(body);
-        console.log(body);
+        //console.log(body);
         return;
     })
     // if(Param instanceof NewsParam.HeadLineParameter){
