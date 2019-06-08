@@ -8,10 +8,24 @@ app.listen(3000, () => {
     console.log('NewsGetter is now running on Port 3000')
 })
 
+
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname+"/Static.html");
     
 })
+
+
+
+
+
+
 
 app.get('/HeadLines', (req, res) => {
     console.log(req.query)
@@ -53,6 +67,10 @@ app.get('/HeadLines', (req, res) => {
     });
 });
 
+
+
+
+
 app.get('/Everything', (req, res) => {
     console.log(req.query)
     var p = req.query;
@@ -92,6 +110,10 @@ app.get('/Everything', (req, res) => {
         res.send(html)
     }))
 })
+
+
+
+
 
 app.get('/Sources', (req, res) => {
     //console.log(req.query)

@@ -2,16 +2,21 @@
 <html>
     <head>
         <!-- <link rel="stylesheet" type="text/css" href="theCss.css"> -->
+
         <style>
             body {
               background-color: #333333;
               margin-left: 5%;
+
+
               
             }
             
             h1 {
               color: whitesmoke;
               font-family: sans-serif;
+
+              
               
               
             }
@@ -22,11 +27,16 @@
             color: whitesmoke;
             margin-top: 2%;
            
+
+
+
              
             }
             
         </style>
     </head>
+
+
     <body style = "color: whitesmoke ;">
         
         <h1>NewsGetter
@@ -35,11 +45,17 @@
         <h3s>by Florian Götz and Sachs Maximilian</h3>
         <form id="frm1" >
             <span style="margin-right: 53px">Type: </span><input type="text" name="type" value="HeadLines"><br>
+
             <span style="margin-right: 22px">Stichwort: </span> <input type="text" name="q"><br>
+
             <span style="margin-right: 33px">Sprache: </span> <input type="text" name="language" value="de"><br>
+
             <span style="margin-right: 21px">Kategorie: </span> <input type="text" name="category"><br>
+
             <span style="margin-right: 34px">Quellen: </span> <input type="text" name="sources"><br>
+
             <span style="margin-right: 53px">Seite: </span> <input type="text" name="page" value="1"><br>
+
             <span style="margin-right: 0px">Seitengrößen: </span> <input type="text" name="pagesize" value="20"><br>
             
         </form>
@@ -50,13 +66,19 @@
         <script>
             function openDyn() {
                 var form = document.getElementById("frm1");
+
                 var type = encodeURIComponent(document.getElementsByName("type")[0].value);
+
                 var q = encodeURIComponent(document.getElementsByName("q")[0].value);
+
                 var source = encodeURIComponent(document.getElementsByName("sources")[0].value);
+
                 var category = encodeURIComponent(document.getElementsByName("category")[0].value);
 
                 var link = `localhost:3000/${type}?`+
+
                 `${q != "" ? "&q=" + q : '' }` +
+
                 //`?q=${encodeURIComponent(document.getElementsByName("q")[0].value) || 'undefined'}`+
                 `&language=${encodeURIComponent(document.getElementsByName("language")[0].value) || 'undefined'}`+
                 `${category != "" ? "&category=" + category : "" }` +
@@ -70,5 +92,9 @@
                 document.getElementById("link").setAttribute('href', link);
             }
         </script>
+        
+
     </body>
+
+
 </html>

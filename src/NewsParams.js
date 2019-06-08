@@ -6,11 +6,15 @@ class HeadLineParameter{
     set country(c) {this._country = c}
 
     get country() {return this._country}
-    
+
     set category(c) {this._category = c}
+
     get category() {return this._category}
+
     set sources(c) {this._sources = c}
+
     get sources() {return this._sources}
+    
     set q(c) {
             	encodeURIComponent(c) != undefined ? this._q = encodeURIComponent(c) : this._q = undefined
             }
