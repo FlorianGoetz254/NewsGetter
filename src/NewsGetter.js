@@ -9,7 +9,7 @@ const NewsParam = require('./NewsParams.js')
 
 const NewsGetter = (Param, Callback) => {
     console.log(Param);
-    //language = "de";
+   // language = "de";
     var type;
     Param instanceof NewsParam.HeadLineParameter ? type = 'top-headlines' : null;
     Param instanceof NewsParam.EverythingParameter ? type = 'everything' : null;
