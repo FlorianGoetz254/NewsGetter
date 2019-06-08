@@ -7,7 +7,7 @@ const newsparams = require('../NewsParams.js')
 var params;
 var argv = yargs.argv
 console.log(argv)
-if(argv.typ == 'head'){//fuck you deniz
+if(argv.typ == 'head'){
     params = new newsparams.HeadLineParameter();
 }
 if(argv.typ == 'e'){
