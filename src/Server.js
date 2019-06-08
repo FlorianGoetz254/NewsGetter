@@ -71,7 +71,7 @@ app.get('/Everything', (req, res) => {
     param.sortBy = p.sortBy;
     (NewsGetter(param, (content) => {
         content = JSON.parse(content);
-        var html = "<html><head></head><body>";
+        var html = "<html><head></head><body body style=\"background-color: #333333;\; \"font-color: whitesmoke;\">";
         var d = content;
         //var d = JSON.parse(content);
         var articles = d.articles;
@@ -100,6 +100,7 @@ app.get('/Sources', (req, res) => {
     param.catagory = p.catagory
     param.language = p.language;
     (NewsGetter(param, (content) => {
+        content = JSON.parse(content);
         var html = '<html><head></head><body style = \"background-color:#333333\;">';
         var d = content;
         //var d = JSON.parse(content);
@@ -107,8 +108,8 @@ app.get('/Sources', (req, res) => {
         articles.forEach(element => {
             html += '<div style=\"margin: 40px;\">';
             html += "<h1 style=\"color: whitesmoke;\">" + (element.title !== undefined ? element.title : element.name) + "</h1>"
-            html += "<h5>" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5>"
-            html += "<h3>" + ("Description: "+element.description) + "</h3>"
+            html += "<h5 style=\"color: whitesmoke;\">" + (element.author !== undefined ? "Author: "+element.author : "Category: "+element.category + element.publishedAt !== undefined ? " | Published at: "+element.publishedAt : "") + "</h5>"
+            html += "<h3 style=\"color: whitesmoke;\">" + ("Description: "+element.description) + "</h3>"
             html += element.content !== undefined ? element.content : "Country: "+element.country + "<br>"
             html += "<a href=\"" + element.url + "\" >"+element.url+"</a>";
             html += "</div>"
