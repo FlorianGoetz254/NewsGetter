@@ -33,6 +33,7 @@ const NewsGetter = (Param, Callback) => {
     //console.log(Param.q === 'undefined');
 
     if (Param.q == undefined || Param.q == 'undefined') url+=`&q=${encodeURIComponent(Param.q)}` ;
+    console.log(Param);
 
     Param.excludeDomains != undefined ? url+=`&excludeDomains=${Param.excludeDomains}` : null;
 
