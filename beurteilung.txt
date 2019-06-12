@@ -1,0 +1,31 @@
+Feedback:
+Euer Projekt ist ziemlicher Spaghetti-Code.
+
+Wenn das Programm funktioniert, ist es trotzdem eine schöne Sache.
+
+Die Zeile 35 in NewsGetter.js ist falsch.
+Nicht wenn Param.q undefined ist, wollt ihr den Parameter anhängen, sondern genau wenn er es nicht ist.
+Habt ihr euer Programm getestet bevor ihr es abgegeben habt?
+
+Bei der URL in Static.html müsst ihr das Protokoll mitangeben, sonst funktioniert das nicht.
+var link = `http://localhost:3000/${type}?`+
+
+Das Error-Handling ist schlecht/nicht vorhanden.
+Wenn ich 'Everything' eingebe und außer der Sprache nichts weiter spezifiziere, antwortet die API mit:
+'Required parameters are missing, the scope of your search is too broad. Please set any of the following required parameters and try again: q, sources, domains.'
+
+Den Fall behandelt ihr aber nicht & euer Programm stürzt einfach ab.
+
+Der NodeJS Client ist nicht gerade berauschend - die Zuweisung der Parameter sehr unelegant, die Funktionalität nicht vorhanden (ausgeben der Server-Response ist keine Funktionalität).
+Außerdem habt ihr den NodeJS client in eurem Dokument nicht beschrieben.
+
+Die Art und Weise wie ihr eure html-Seite zurückliefert ist nicht die Art wie Express das handhabt.
+
+Ihr habt offenbar viel Zeit in die Gestaltung der HTML Seite bzw. das parsen der Response investiert.
+Euer Projekt besteht zum größten Teil aus dem Script in eurer HTML Seite und dem HTML Code, den ihr in Server.js zusammenbaut.
+
+Das ist aber nicht das worum es in NVS in diesem Semester ging.
+
+Nachrichten wie die an Deniz in client.js sind einfach nur unprofessionell.
+
+Ich erkenne dennoch euer Bemühen und honoriere es mit einem Befriedigend (3).
